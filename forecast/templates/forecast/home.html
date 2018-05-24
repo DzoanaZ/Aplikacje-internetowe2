@@ -1,0 +1,23 @@
+{% extends 'forecast/base.html' %}
+{% block content %}
+<body id="homebody" style="background-image: url('static/images/pattern.svg');">
+<h2 style="font-size:0.2em;" id="homewelcome">Prognoza pogody dla każdej miejscowości na świecie</h2>
+<div class="col-sm-4 col-sm-offset-4" >
+ <form method="post" action={% url 'forecast:update' %}>
+ {% csrf_token %}
+    <div class="form-group">
+      <input type="text" class="form-control" id="usr" placeholder="Wpisz miejscowość" name="city" value={{city}}>
+    </div>
+    <div class="form-group" style="text-align:center;">
+      <button type="submit" class="btn btn-success btn-lg">Szukaj</button>
+    </div>
+  </form>
+</div>
+<script>
+$(document).ready(function() {
+
+$("h2").animate({fontSize:'2em'}, 1000);
+
+})
+</script>
+{% endblock %}
