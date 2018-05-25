@@ -1,12 +1,12 @@
 {% extends 'forecast/base.html' %}
 {% block content %}
 {% load static %}
-<h3 id="message">Prognoza pogody na 5 dni dla miejscowości {{ city }}</h3>
+<h2 id="message">Miejscowość nieodnaleziona.</h2>
 {% for i in 'xxxxx' %}
 <div class="col-sm-4">
 	<h3 id="date{{forloop.counter}}"></h3>
 	<div id="div{{forloop.counter}}" class="jumbotron">
-		<img id="image{{forloop.counter}}" src="" height="90" width="90">
+		<img id="image{{forloop.counter}}" src="..\static\images\icons\01d.svg" height="90" width="90">
 		<h3 id="head{{forloop.counter}}"></h3>
 	</div>
 </div>
@@ -28,6 +28,7 @@ $.ajax({
         $("#message").html("Miejscowość nieodnaleziona");
          }
         else {
+		$("#message").html("Prognoza pogody na 5 dni dla miejscowości {{ city }}");
         var day1 = data.list[l-1-32].weather[0].description
         var icon1 = data.list[l-1-32].weather[0].icon;
         var icon1path = "{% static 'images/icons/' %}" + icon1 + ".svg";
@@ -93,6 +94,13 @@ $(document).ready(function() {
 		time = mydate.slice(11,20);
 		window.location.href = '/detail/' + mydiv + '/' + year+'/'+month+'/'+day+'/'+time
 	});
+})
+</script>
+<script>
+$(document).ready(function() {
+
+$("h2").animate({fontSize:'2em'}, 1000);
+
 })
 </script>
 {% endblock%}
