@@ -18,7 +18,7 @@
       <a class="navbar-brand" href="{% url 'forecast:home' %}">Prognoza pogody</a>
     </div>
     
-    <h4 id="timer" class="navbar-text navbar-center"></h4>
+    
     
 	<form method="post" action="{% url 'forecast:update' %}" class="navbar-form navbar-right">
      {% csrf_token %}
@@ -27,6 +27,8 @@
       </div>
       <button type="submit" class="btn btn-warning">Szukaj</button>
     </form>
+	
+	<h4 id="timer" class="navbar-text navbar-right"></h4>
   </div>
 </nav>
 <br />
@@ -36,8 +38,14 @@
 </div>
 <script>
 setInterval(function() {
-var d = new Date()
-document.getElementById("timer").innerHTML = d.toLocaleTimeString();
+	var d = new Date()
+	var day = d.getDate();
+	var month = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
+	month = month[d.getMonth()];
+	var year = d.getFullYear();
+	var hours = d.getHours() <10 ? "0"+d.getHours(): d.getHours();
+	var minutes = d.getMinutes() <10 ? "0"+d.getMinutes(): d.getMinutes();
+	document.getElementById("timer").innerHTML = hours + ":" + minutes + ", " + day + " " + month + " " + year;
 },1000)
 </script>
 </body>
