@@ -1,7 +1,7 @@
 {% extends 'forecast/base.html' %}
 {% block content %}
 <body id="homebody">
-<h2 style="font-size:0.2em;" id="homewelcome">Prognoza pogody dla każdej miejscowości na świecie</h2>
+<h2 style="font-size:0.2em;" id="homewelcome">MeteoBeaver sprawdzi dla Ciebie pogodę w dowolnym miejscu na świecie</h2>
 <div class="col-sm-4 col-sm-offset-4" >
  <form method="post" action={% url 'forecast:update' %}>
  {% csrf_token %}
