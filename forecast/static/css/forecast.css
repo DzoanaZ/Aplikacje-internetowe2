@@ -1,9 +1,21 @@
-#homewelcome {
-text-align: center;
-color: green;
+#homewelcome, #message {
+	text-align: center;
+	color: rgb(200,140,20);
 }
-#timer {
-color:green;
-text-align:center;
-
+#timer, h3 {
+	color: rgb(190,190,190);
+	text-align:center;
+}
+body#homebody{
+	background-image: url('../images/pattern.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+nav.navbar, nav.navbar-inverse{
+	background-color: rgb(95,95,95);
+	border-color: rgb(95,95,95);
+	padding: 0 50px;
+}
+.jumbotron{
+	text-align:center; color:green; font-size:2em;
 }

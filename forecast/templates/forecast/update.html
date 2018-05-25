@@ -1,14 +1,14 @@
 {% extends 'forecast/base.html' %}
 {% block content %}
 {% load static %}
-<h3 id="message" style="color:blue; text-align:center;">Prognoza pogody na 5 dni dla miejscowości {{ city }}</h3>
+<h3 id="message">Prognoza pogody na 5 dni dla miejscowości {{ city }}</h3>
 {% for i in 'xxxxx' %}
 <div class="col-sm-4">
-<h3 id="date{{forloop.counter}}" style="text-align:center; color:green;"></h3>
-<div id="div{{forloop.counter}}" class="jumbotron" style="text-align:center; color:green; font-size:2em;">
-<img id="image{{forloop.counter}}" src="" height="90" width="90">
-<h3 id="head{{forloop.counter}}"></h3>
-</div>
+	<h3 id="date{{forloop.counter}}"></h3>
+	<div id="div{{forloop.counter}}" class="jumbotron">
+		<img id="image{{forloop.counter}}" src="" height="90" width="90">
+		<h3 id="head{{forloop.counter}}"></h3>
+	</div>
 </div>
 {% endfor %}
 <div id="mydata"></div>
@@ -82,17 +82,17 @@ $.ajax({
 </script>
 <script>
 $(document).ready(function() {
-$(".jumbotron").css('cursor','pointer');
-$(".jumbotron").click(function() {
-mydiv = $(this).attr('id').slice(-1);
-somedate = "date" + mydiv;
-mydate = sessionStorage.getItem(somedate);
-year = mydate.slice(0,4);
-month = mydate.slice(5,7);
-day = mydate.slice(8,10);
-time = mydate.slice(11,20);
-window.location.href = '/detail/' + mydiv + '/' + year+'/'+month+'/'+day+'/'+time
-});
+	$(".jumbotron").css('cursor','pointer');
+	$(".jumbotron").click(function() {
+		mydiv = $(this).attr('id').slice(-1);
+		somedate = "date" + mydiv;
+		mydate = sessionStorage.getItem(somedate);
+		year = mydate.slice(0,4);
+		month = mydate.slice(5,7);
+		day = mydate.slice(8,10);
+		time = mydate.slice(11,20);
+		window.location.href = '/detail/' + mydiv + '/' + year+'/'+month+'/'+day+'/'+time
+	});
 })
 </script>
 {% endblock%}
